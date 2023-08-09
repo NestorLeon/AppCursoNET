@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
+using Utilerias;
 
 namespace Negocio
 {
@@ -17,22 +18,36 @@ namespace Negocio
         #endregion
 
         #region MÉTODOS, ACCIONES, OPERACIONES
-        public static void CrearCuenta(string usuario, string password, string correo_electronico)
+        public static bool CrearCuenta(string usuario, string password, string correo_electronico)
         {
-            string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
-            dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
-            dcDataContext.Connection.Open();
+            bool valorRetorno = false;
+            try
+            {
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
+                string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
+                dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
+                dcDataContext.Connection.Open();
 
-            Usuario objUsuario = new Usuario();
-            objUsuario.Usuario1 = usuario;
-            objUsuario.Password = password;
-            objUsuario.CorreoElectronico = correo_electronico;
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Usuario objUsuario = new Usuario();
+                objUsuario.Usuario1 = usuario;
+                objUsuario.Password = password;
+                objUsuario.CorreoElectronico = correo_electronico;
 
-            dcDataContext.Usuario.InsertOnSubmit(objUsuario);
+                dcDataContext.Usuario.InsertOnSubmit(objUsuario);
 
-            dcDataContext.SubmitChanges();
-            dcDataContext.Connection.Close();
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
+                dcDataContext.SubmitChanges();
+                dcDataContext.Connection.Close();
 
+                valorRetorno = true;
+            }
+            catch (Exception ex)
+            {
+                clsULogExceptions.WriteException(ex.Message);
+                throw new ApplicationException("Ocurrió un error al actualizar el usuario.");
+            }
+            return valorRetorno;
         }
         public static List<Usuario> ObtenerLista()
         {
@@ -49,27 +64,92 @@ namespace Negocio
 
             return sqlConsulta.ToList();
         }
+        public static bool Actualizar(Usuario usuario)
+        {
+            bool valorRetorno = false;
+            try
+            {
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
+                string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
+                dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
+                dcDataContext.Connection.Open();
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Usuario objUsuario = dcDataContext.Usuario.First(u => u.ID == usuario.ID);
+                objUsuario.Usuario1 = usuario.Usuario1;
+                objUsuario.Password = usuario.Password;
+                objUsuario.CorreoElectronico = usuario.CorreoElectronico;
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
+                dcDataContext.SubmitChanges();
+                dcDataContext.Connection.Close();
+
+                valorRetorno = true;
+            }
+            catch (Exception ex)
+            {
+                clsULogExceptions.WriteException(ex.Message);
+                throw new ApplicationException("Ocurrió un error al actualizar el usuario.");
+            }
+            return valorRetorno;
+        }
+        public static bool Eliminar(int ID)
+        {
+
+            bool valorRetorno = false;
+            try
+            {
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
+                string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
+                dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
+                dcDataContext.Connection.Open();
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Usuario usuario = dcDataContext.Usuario.First(u => u.ID == ID);
+
+                dcDataContext.Usuario.DeleteOnSubmit(usuario);
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
+                dcDataContext.SubmitChanges();
+                dcDataContext.Connection.Close();
+
+                valorRetorno = true;
+            }
+            catch (Exception ex)
+            {
+                clsULogExceptions.WriteException(ex.Message);
+                throw new ApplicationException("Ocurrió un error al actualizar el usuario.");
+            }
+            return valorRetorno;
+        }
+        public static Usuario GetOne(int ID)
+        {
+            Usuario valorRetorno = null;
+            try
+            {
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
+                string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
+                dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
+                dcDataContext.Connection.Open();
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                valorRetorno = dcDataContext.Usuario.First(u => u.ID == ID);
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
+                dcDataContext.SubmitChanges();
+                dcDataContext.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                clsULogExceptions.WriteException(ex.Message);
+                throw new ApplicationException("Ocurrió un error al obtener el usuario con ID igual a " + ID);
+            }
+            return valorRetorno;
+        }
 
         public static void Login()
         {
 
-        }
-        public static void ActualizarCuenta()
-        {
-
-        }
-        public static void EliminarCuenta(int ID)
-        {
-            string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
-            dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
-            dcDataContext.Connection.Open();
-
-            Usuario usuario = dcDataContext.Usuario.First(u => u.ID == ID);
-
-            dcDataContext.Usuario.DeleteOnSubmit(usuario);
-
-            dcDataContext.SubmitChanges();
-            dcDataContext.Connection.Close();
         }
         #endregion
     }
