@@ -13,14 +13,14 @@ using Utilerias;
 
 namespace MyApp
 {
-    public partial class Form1 : Form
+    public partial class Ciudades : Form
     {
         #region PROPIEDADES
         public EstadosDeForma Estado { get; set; }
         #endregion
 
         #region CONSTRUCTORES
-        public Form1()
+        public Ciudades()
         {
             InitializeComponent();
             CargaDatos();
@@ -31,29 +31,25 @@ namespace MyApp
         #region METODOS
         private void CargaDatos()
         {
-            List<Usuario> usuarios = clsNUsuario.ObtenerLista();
-            dgvDatos.DataSource = usuarios;
+            List<Ciudad> ciudades = clsNCiudad.ObtenerLista();
+            dgvDatos.DataSource = ciudades;
 
             #region FORMATEAR GRID
             if (dgvDatos.Columns.Contains("ID"))
             {
                 dgvDatos.Columns["ID"].Visible = false;
             }
-            if (dgvDatos.Columns.Contains("Usuario1"))
+            if (dgvDatos.Columns.Contains("Ciudad1"))
             {
-                dgvDatos.Columns["Usuario1"].HeaderText = "Nombre de Usuario";
+                dgvDatos.Columns["Ciudad1"].HeaderText = "Nombre de la ciudad";
             }
-            if (dgvDatos.Columns.Contains("CorreoElectronico"))
-            {
-                dgvDatos.Columns["CorreoElectronico"].HeaderText = "Correo Electrónico";
-            }
+
             #endregion
         }
         private void LimpiarFormulario()
         {
-            txtUsuario.Text = "";
-            txtPassword.Text = "";
-            txtCorreoElectronico.Text = "";
+            txtCiudad.Text = "";
+
         }
         #endregion
 
@@ -62,7 +58,7 @@ namespace MyApp
         {
             LimpiarFormulario();
 
-            lblTituloPanelDatos.Text = "Nuevo Usuario";
+            lblTituloPanelDatos.Text = "Nueva Ciudad";
             panelDatos.BringToFront();
             panelDatos.Visible = true;
             panelGrid.SendToBack();
@@ -74,13 +70,12 @@ namespace MyApp
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                Usuario usuario = clsNUsuario.GetOne(ID);
+                Ciudad usuario = clsNCiudad.GetOne(ID);
 
-                txtUsuario.Text = usuario.Usuario1;
-                txtPassword.Text = usuario.Password;
-                txtCorreoElectronico.Text = usuario.CorreoElectronico;
+                txtCiudad.Text = usuario.Ciudad1;
 
-                lblTituloPanelDatos.Text = "Actualizar Usuario";
+
+                lblTituloPanelDatos.Text = "Actualizar Ciudad";
                 panelDatos.BringToFront();
                 panelDatos.Visible = true;
                 panelGrid.SendToBack();
@@ -97,7 +92,7 @@ namespace MyApp
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                if(clsNUsuario.Eliminar(ID))
+                if (clsNCiudad.Eliminar(ID))
                     CargaDatos();
             }
             catch (Exception ex)
@@ -112,8 +107,7 @@ namespace MyApp
             {
                 if (this.Estado == EstadosDeForma.Nuevo)
                 {
-                    if (clsNUsuario.CrearCuenta(txtUsuario.Text,
-                                    txtPassword.Text, txtCorreoElectronico.Text)
+                    if (clsNCiudad.CrearCiudad(txtCiudad.Text)
                     )
                     {
                         CargaDatos();
@@ -123,13 +117,12 @@ namespace MyApp
                 else if (this.Estado == EstadosDeForma.Actualizando)
                 {
                     int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
-                    Usuario usuario = new Usuario();
-                    usuario.ID = ID;
-                    usuario.Usuario1 = txtUsuario.Text;
-                    usuario.Password = txtPassword.Text;
-                    usuario.CorreoElectronico = txtCorreoElectronico.Text;
+                    Ciudad ciudad = new Ciudad();
+                    ciudad.ID = ID;
+                    ciudad.Ciudad1 = txtCiudad.Text;
 
-                    if (clsNUsuario.Actualizar(usuario))
+
+                    if (clsNCiudad.Actualizar(ciudad))
                     {
                         CargaDatos();
                         btnCancelar_Click(null, null);
@@ -150,5 +143,75 @@ namespace MyApp
         }
 
         #endregion
+
+        private void panelDatos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ciudades_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
+
+                if (clsNCiudad.Eliminar(ID))
+                    CargaDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
+
+                if (clsNCiudad.Eliminar(ID))
+                    CargaDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void iconButton1_Click_2(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
+
+                Ciudad usuario = clsNCiudad.GetOne(ID);
+
+                txtCiudad.Text = usuario.Ciudad1;
+
+
+                lblTituloPanelDatos.Text = "Actualizar Ciudad";
+                panelDatos.BringToFront();
+                panelDatos.Visible = true;
+                panelGrid.SendToBack();
+                this.Estado = EstadosDeForma.Actualizando;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
