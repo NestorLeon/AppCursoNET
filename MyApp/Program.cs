@@ -16,7 +16,7 @@ namespace MyApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ciudades());
+            Application.Run(new Form1());
         }
     }
 }
