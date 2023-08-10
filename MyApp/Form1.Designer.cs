@@ -341,7 +341,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panelGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
