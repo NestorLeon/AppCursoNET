@@ -14,7 +14,7 @@
         <elementListCompartment Id="53a5adb6-cf86-422f-ac66-8e7aefd79e22" absoluteBounds="6.765, 3.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.75 : 3); (7.75 : 2.52089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.75 : 3); (7.75 : 2.52089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcCineDataContext/Ciudad/Ciudad_Cine" />
       <nodes>
         <classShapeMoniker Id="1a7f7cc2-0748-41c7-8305-9fa2dfec9e07" />
@@ -25,6 +25,12 @@
       <DataClassMoniker Name="/dcCineDataContext/Usuario" />
       <nestedChildShapes>
         <elementListCompartment Id="89173734-57a0-470c-bdee-ee280a34c892" absoluteBounds="3.8899999999999997, 1.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d9d7299d-33c2-45e2-9a33-9dc428c89f5b" absoluteBounds="4.125, 3.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/dcCineDataContext/Sala_Tipo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="931c4c66-9aa0-4746-afab-1ece1a0bf22d" absoluteBounds="4.14, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

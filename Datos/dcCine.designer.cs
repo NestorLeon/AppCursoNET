@@ -39,13 +39,10 @@ namespace Datos
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertSala_Tipo(Sala_Tipo instance);
+    partial void UpdateSala_Tipo(Sala_Tipo instance);
+    partial void DeleteSala_Tipo(Sala_Tipo instance);
     #endregion
-		
-		public dcCineDataContext() : 
-				base(global::Datos.Properties.Settings.Default.BD_CursoCSharpNetConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		public dcCineDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -92,6 +89,14 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Sala_Tipo> Sala_Tipo
+		{
+			get
+			{
+				return this.GetTable<Sala_Tipo>();
 			}
 		}
 	}
@@ -518,6 +523,188 @@ namespace Datos
 					this._CorreoElectronico = value;
 					this.SendPropertyChanged("CorreoElectronico");
 					this.OnCorreoElectronicoChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sala_Tipo")]
+	public partial class Sala_Tipo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Nombre;
+		
+		private string _Descripcion;
+		
+		private int _Capacidad;
+		
+		private string _Formato_Pantalla;
+		
+		private string _Sonido;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    partial void OnCapacidadChanging(int value);
+    partial void OnCapacidadChanged();
+    partial void OnFormato_PantallaChanging(string value);
+    partial void OnFormato_PantallaChanged();
+    partial void OnSonidoChanging(string value);
+    partial void OnSonidoChanged();
+    #endregion
+		
+		public Sala_Tipo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this.OnNombreChanging(value);
+					this.SendPropertyChanging();
+					this._Nombre = value;
+					this.SendPropertyChanged("Nombre");
+					this.OnNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(200)")]
+		public string Descripcion
+		{
+			get
+			{
+				return this._Descripcion;
+			}
+			set
+			{
+				if ((this._Descripcion != value))
+				{
+					this.OnDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._Descripcion = value;
+					this.SendPropertyChanged("Descripcion");
+					this.OnDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacidad", DbType="Int NOT NULL")]
+		public int Capacidad
+		{
+			get
+			{
+				return this._Capacidad;
+			}
+			set
+			{
+				if ((this._Capacidad != value))
+				{
+					this.OnCapacidadChanging(value);
+					this.SendPropertyChanging();
+					this._Capacidad = value;
+					this.SendPropertyChanged("Capacidad");
+					this.OnCapacidadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Formato_Pantalla", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Formato_Pantalla
+		{
+			get
+			{
+				return this._Formato_Pantalla;
+			}
+			set
+			{
+				if ((this._Formato_Pantalla != value))
+				{
+					this.OnFormato_PantallaChanging(value);
+					this.SendPropertyChanging();
+					this._Formato_Pantalla = value;
+					this.SendPropertyChanged("Formato_Pantalla");
+					this.OnFormato_PantallaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sonido", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Sonido
+		{
+			get
+			{
+				return this._Sonido;
+			}
+			set
+			{
+				if ((this._Sonido != value))
+				{
+					this.OnSonidoChanging(value);
+					this.SendPropertyChanging();
+					this._Sonido = value;
+					this.SendPropertyChanged("Sonido");
+					this.OnSonidoChanged();
 				}
 			}
 		}
