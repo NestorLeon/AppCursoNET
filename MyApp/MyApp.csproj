@@ -53,12 +53,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciudades.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ciudades.Designer.cs">
-      <DependentUpon>Ciudades.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,9 +61,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Ciudades.resx">
-      <DependentUpon>Ciudades.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,9 +100,6 @@
       <Project>{5f6075a0-e6f1-46a1-8751-6f4bc76e0b41}</Project>
       <Name>Utilerias</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

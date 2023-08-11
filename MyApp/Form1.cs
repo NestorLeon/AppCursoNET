@@ -148,7 +148,8 @@ namespace MyApp
             panelDatos.SendToBack();
             this.Estado = EstadosDeForma.Inicial;
         }
-
         #endregion
+
+        
     }
 }
