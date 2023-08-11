@@ -57,7 +57,6 @@ namespace MyApp
         {
             textNombre.Text = "";
             textDescripcion.Text = "";
-            textCapacidad.Text = "";
             textPantalla.Text = "";
             textSonido.Text = "";
         }
@@ -83,7 +82,6 @@ namespace MyApp
 
                 textNombre.Text = sala_tipo.Nombre;
                 textDescripcion.Text = sala_tipo.Descripcion;
-                textCapacidad.Text = sala_tipo.Capacidad.ToString();
                 textPantalla.Text = sala_tipo.Formato_Pantalla;
                 textSonido.Text = sala_tipo.Sonido;
 
@@ -119,8 +117,7 @@ namespace MyApp
                 if (this.Estado == EstadosDeForma.Nuevo)
                 {
                     if (clsNSalaTipo.AgregarSala(textNombre.Text,
-                                    textDescripcion.Text, int.Parse(textCapacidad.Text), 
-                                        textPantalla.Text, textSonido.Text)
+                                    textDescripcion.Text, textPantalla.Text, textSonido.Text)
                     )
                     {
                         CargaDatos();
@@ -134,7 +131,6 @@ namespace MyApp
                     sala_Tipo.ID = ID;
                     sala_Tipo.Nombre = textNombre.Text;
                     sala_Tipo.Descripcion = textDescripcion.Text;
-                    sala_Tipo.Capacidad = int.Parse(textCapacidad.Text);
                     sala_Tipo.Formato_Pantalla = textPantalla.Text;
                     sala_Tipo.Sonido = textSonido.Text;
 

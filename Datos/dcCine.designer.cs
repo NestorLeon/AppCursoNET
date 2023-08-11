@@ -44,6 +44,12 @@ namespace Datos
     partial void DeleteSala_Tipo(Sala_Tipo instance);
     #endregion
 		
+		public dcCineDataContext() : 
+				base(global::Datos.Properties.Settings.Default.BD_CursoCSharpNetConnectionString1, mappingSource)
+		{
+			OnCreated();
+		}
+		
 		public dcCineDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -560,8 +566,6 @@ namespace Datos
 		
 		private string _Descripcion;
 		
-		private int _Capacidad;
-		
 		private string _Formato_Pantalla;
 		
 		private string _Sonido;
@@ -576,8 +580,6 @@ namespace Datos
     partial void OnNombreChanged();
     partial void OnDescripcionChanging(string value);
     partial void OnDescripcionChanged();
-    partial void OnCapacidadChanging(int value);
-    partial void OnCapacidadChanged();
     partial void OnFormato_PantallaChanging(string value);
     partial void OnFormato_PantallaChanged();
     partial void OnSonidoChanging(string value);
@@ -645,26 +647,6 @@ namespace Datos
 					this._Descripcion = value;
 					this.SendPropertyChanged("Descripcion");
 					this.OnDescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacidad", DbType="Int NOT NULL")]
-		public int Capacidad
-		{
-			get
-			{
-				return this._Capacidad;
-			}
-			set
-			{
-				if ((this._Capacidad != value))
-				{
-					this.OnCapacidadChanging(value);
-					this.SendPropertyChanging();
-					this._Capacidad = value;
-					this.SendPropertyChanged("Capacidad");
-					this.OnCapacidadChanged();
 				}
 			}
 		}

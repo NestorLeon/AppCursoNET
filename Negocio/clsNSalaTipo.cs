@@ -14,13 +14,12 @@ namespace Negocio
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public int Capacidad { get; set; }
         public string Formato_Pantalla { get; set; }
         public string Sonido { get; set; }
         #endregion
 
         #region MÉTODOS, ACCIONES, OPERACIONES
-        public static bool AgregarSala(string Nombre, string Descripcion, int Capacidad, string Formato_Pantalla, string Sonido)
+        public static bool AgregarSala(string Nombre, string Descripcion, string Formato_Pantalla, string Sonido)
         {
             bool valorRetorno = false;
             try
@@ -34,7 +33,6 @@ namespace Negocio
                 Sala_Tipo objSalaTipo = new Sala_Tipo();
                 objSalaTipo.Nombre = Nombre;
                 objSalaTipo.Descripcion = Descripcion;
-                objSalaTipo.Capacidad = Capacidad;
                 objSalaTipo.Formato_Pantalla = Formato_Pantalla;
                 objSalaTipo.Sonido = Sonido;
 
@@ -82,7 +80,6 @@ namespace Negocio
                 Sala_Tipo objSalaTipo = dcDataContext.Sala_Tipo.First(u => u.ID == sala_Tipo.ID);
                 objSalaTipo.Nombre = sala_Tipo.Nombre;
                 objSalaTipo.Descripcion = sala_Tipo.Descripcion;
-                objSalaTipo.Capacidad = sala_Tipo.Capacidad;
                 objSalaTipo.Formato_Pantalla = sala_Tipo.Formato_Pantalla;
                 objSalaTipo.Sonido = sala_Tipo.Sonido;
 
