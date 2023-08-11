@@ -37,7 +37,8 @@ namespace Datos.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Initial" +
-            " Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin;Password=s1I8lTCuyPxnXdkCGOV5")]
+            " Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin;Password=s1I" +
+            "8lTCuyPxnXdkCGOV5")]
         public string BD_CursoCSharpNetConnectionString1 {
             get {
                 return ((string)(this["BD_CursoCSharpNetConnectionString1"]));

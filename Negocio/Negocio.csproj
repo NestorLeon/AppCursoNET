@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsNSalaTipo.cs" />
-    <Compile Include="clsAsientoTipo.cs" />
     <Compile Include="clsNUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
