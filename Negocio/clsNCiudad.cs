@@ -8,29 +8,33 @@ using Utilerias;
 
 namespace Negocio
 {
-    public class clsNAsientoTipo
+    public class clsNCiudad
     {
         #region PROPIEDADES
         public int ID { get; set; }
-        public string Tipo { get; set; }
+        public string Ciudad { get; set; }
+
         #endregion
 
-        #region MÉTODOS
-        public static bool CrearCuenta(string tipo)
+        #region MÉTODOS, ACCIONES, OPERACIONES
+        public static bool CrearCiudad(string ciudad)
         {
             bool valorRetorno = false;
             try
             {
-                
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
                 string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
                 dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
                 dcDataContext.Connection.Open();
-                               
-                Asiento_Tipo objAsiento_Tipo = new Asiento_Tipo();
-                objAsiento_Tipo.Tipo = tipo;
-                
-                dcDataContext.Asiento_Tipo.InsertOnSubmit(objAsiento_Tipo);
-                              
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Ciudad objCiudad = new Ciudad();
+                objCiudad.Ciudad1= ciudad;
+              
+
+                dcDataContext.Ciudad.InsertOnSubmit(objCiudad);
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
                 dcDataContext.SubmitChanges();
                 dcDataContext.Connection.Close();
 
@@ -39,18 +43,18 @@ namespace Negocio
             catch (Exception ex)
             {
                 clsULogExceptions.WriteException(ex.Message);
-                throw new ApplicationException("Ocurrió un error al actualizar el tipo de asiento.");
+                throw new ApplicationException("Ocurrió un error al actualizar el usuario.");
             }
             return valorRetorno;
         }
-        public static List<Asiento_Tipo> ObtenerLista()
+        public static List<Ciudad> ObtenerLista()
         {
             string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
             dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
             dcDataContext.Connection.Open();
 
-           
-            var sqlConsulta = from u in dcDataContext.Asiento_Tipo
+            //  select * from Ciudad
+            var sqlConsulta = from u in dcDataContext.Ciudad
                               select u;
 
             dcDataContext.SubmitChanges();
@@ -58,19 +62,22 @@ namespace Negocio
 
             return sqlConsulta.ToList();
         }
-        public static bool Actualizar(Asiento_Tipo tipo)
+        public static bool Actualizar(Ciudad ciudad)
         {
             bool valorRetorno = false;
             try
             {
-                
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
                 string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
                 dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
                 dcDataContext.Connection.Open();
-                               
-                Asiento_Tipo objAsientoTipo = dcDataContext.Asiento_Tipo.First(u => u.ID == tipo.ID);
-                objAsientoTipo.Tipo = tipo.Tipo;
-                                
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Ciudad objCiudad = dcDataContext.Ciudad.First(u => u.ID == ciudad.ID);
+                objCiudad.Ciudad1= ciudad.Ciudad1;
+               
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
                 dcDataContext.SubmitChanges();
                 dcDataContext.Connection.Close();
 
@@ -79,7 +86,7 @@ namespace Negocio
             catch (Exception ex)
             {
                 clsULogExceptions.WriteException(ex.Message);
-                throw new ApplicationException("Ocurrió un error al actualizar el tipo de asiento.");
+                throw new ApplicationException("Ocurrió un error al actualizar la ciudad");
             }
             return valorRetorno;
         }
@@ -89,15 +96,17 @@ namespace Negocio
             bool valorRetorno = false;
             try
             {
-                
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
                 string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
                 dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
                 dcDataContext.Connection.Open();
-                                
-                Asiento_Tipo tipo = dcDataContext.Asiento_Tipo.First(u => u.ID == ID);
 
-                dcDataContext.Asiento_Tipo.DeleteOnSubmit(tipo);
-                                
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                Ciudad ciudad = dcDataContext.Ciudad.First(u => u.ID == ID);
+
+                dcDataContext.Ciudad.DeleteOnSubmit(ciudad);
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
                 dcDataContext.SubmitChanges();
                 dcDataContext.Connection.Close();
 
@@ -106,29 +115,31 @@ namespace Negocio
             catch (Exception ex)
             {
                 clsULogExceptions.WriteException(ex.Message);
-                throw new ApplicationException("Ocurrió un error al actualizar el tipo de asiento.");
+                throw new ApplicationException("Ocurrió un error al actualizar la ciudad.");
             }
             return valorRetorno;
         }
-        public static Asiento_Tipo GetOne(int ID)
+        public static Ciudad GetOne(int ID)
         {
-            Asiento_Tipo valorRetorno = null;
+            Ciudad valorRetorno = null;
             try
             {
-                
+                // CREAR OBJETO DATA CONTEXT Y ABRIR CONEXIÓN
                 string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
                 dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
                 dcDataContext.Connection.Open();
-                                
-                valorRetorno = dcDataContext.Asiento_Tipo.First(u => u.ID == ID);
-                                
+
+                // INSTRUCCIONES DE MANIPULACIÓN DE LOS DATOS
+                valorRetorno = dcDataContext.Ciudad.First(u => u.ID == ID);
+
+                // ENVIAR CAMBIOS Y CERRAR CONEXIÓN
                 dcDataContext.SubmitChanges();
                 dcDataContext.Connection.Close();
             }
             catch (Exception ex)
             {
                 clsULogExceptions.WriteException(ex.Message);
-                throw new ApplicationException("Ocurrió un error al obtener el tipo de asiento con ID igual a " + ID);
+                throw new ApplicationException("Ocurrió un error al obtener la ciudad con ID igual a " + ID);
             }
             return valorRetorno;
         }
@@ -140,3 +151,4 @@ namespace Negocio
         #endregion
     }
 }
+    
