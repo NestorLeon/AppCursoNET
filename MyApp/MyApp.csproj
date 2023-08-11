@@ -65,6 +65,12 @@
     <Compile Include="FormSalaTipo.Designer.cs">
       <DependentUpon>FormSalaTipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Tipo_Asiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Tipo_Asiento.Designer.cs">
+      <DependentUpon>Form_Tipo_Asiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSalaTipo.resx">
       <DependentUpon>FormSalaTipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Tipo_Asiento.resx">
+      <DependentUpon>Form_Tipo_Asiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,6 +118,9 @@
       <Project>{5f6075a0-e6f1-46a1-8751-6f4bc76e0b41}</Project>
       <Name>Utilerias</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,14 +13,14 @@ using Utilerias;
 
 namespace MyApp
 {
-    public partial class Form1 : Form
+    public partial class Form_Tipo_Asiento : Form
     {
         #region PROPIEDADES
         public EstadosDeForma Estado { get; set; }
         #endregion
 
         #region CONSTRUCTORES
-        public Form1()
+        public Form_Tipo_Asiento()
         {
             InitializeComponent();
             CargaDatos();
@@ -31,54 +31,67 @@ namespace MyApp
         #region METODOS
         private void CargaDatos()
         {
-            List<Usuario> usuarios = clsNUsuario.ObtenerLista();
-            dgvDatos.DataSource = usuarios;
+            List<Asiento_Tipo> tipos = clsNAsientoTipo.ObtenerLista();
+            dgvDatos.DataSource = tipos;
 
             #region FORMATEAR GRID
             if (dgvDatos.Columns.Contains("ID"))
             {
                 dgvDatos.Columns["ID"].Visible = false;
             }
-            if (dgvDatos.Columns.Contains("Usuario1"))
+            if (dgvDatos.Columns.Contains("Tipo"))
             {
-                dgvDatos.Columns["Usuario1"].HeaderText = "Nombre de Usuario";
-            }
-            if (dgvDatos.Columns.Contains("CorreoElectronico"))
-            {
-                dgvDatos.Columns["CorreoElectronico"].HeaderText = "Correo Electrónico";
+                dgvDatos.Columns["Tipo"].HeaderText = "Tipo de Asiento";
             }
             #endregion
         }
         private void LimpiarFormulario()
         {
             txtUsuario.Text = "";
-            txtPassword.Text = "";
-            txtCorreoElectronico.Text = "";
         }
         #endregion
 
-        #region EVENTOS CLICKs BOTONES
-        private void btnNuevo_Click(object sender, EventArgs e)
+        #region EVENTOS
+             
+              
+              
+            
+        private void panelDatos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelGrid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTituloPanelDatos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             LimpiarFormulario();
 
-            lblTituloPanelDatos.Text = "Nuevo Usuario";
+            lblTituloPanelDatos.Text = "Nuevo tipo de asiento";
             panelDatos.BringToFront();
             panelDatos.Visible = true;
             panelGrid.SendToBack();
             this.Estado = EstadosDeForma.Nuevo;
         }
-        private void btnActualizar_Click(object sender, EventArgs e)
+        #endregion
+
+        private void btnActualizar_Click_1(object sender, EventArgs e)
         {
             try
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                Usuario usuario = clsNUsuario.GetOne(ID);
+                Asiento_Tipo tipo = clsNAsientoTipo.GetOne(ID);
 
-                txtUsuario.Text = usuario.Usuario1;
-                txtPassword.Text = usuario.Password;
-                txtCorreoElectronico.Text = usuario.CorreoElectronico;
+                txtUsuario.Text = tipo.Tipo;
 
                 lblTituloPanelDatos.Text = "Actualizar Usuario";
                 panelDatos.BringToFront();
@@ -91,13 +104,14 @@ namespace MyApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                if(clsNUsuario.Eliminar(ID))
+                if (clsNAsientoTipo.Eliminar(ID))
                     CargaDatos();
             }
             catch (Exception ex)
@@ -106,33 +120,30 @@ namespace MyApp
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             try
             {
                 if (this.Estado == EstadosDeForma.Nuevo)
                 {
-                    if (clsNUsuario.CrearCuenta(txtUsuario.Text,
-                                    txtPassword.Text, txtCorreoElectronico.Text)
+                    if (clsNAsientoTipo.CrearCuenta(txtUsuario.Text)
                     )
                     {
                         CargaDatos();
-                        btnCancelar_Click(null, null);
+                        btnCancelar_Click_1(null, null);
                     }
                 }
                 else if (this.Estado == EstadosDeForma.Actualizando)
                 {
                     int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
-                    Usuario usuario = new Usuario();
-                    usuario.ID = ID;
-                    usuario.Usuario1 = txtUsuario.Text;
-                    usuario.Password = txtPassword.Text;
-                    usuario.CorreoElectronico = txtCorreoElectronico.Text;
+                    Asiento_Tipo tipo = new Asiento_Tipo();
+                    tipo.ID = ID;
+                    tipo.Tipo = txtUsuario.Text;
 
-                    if (clsNUsuario.Actualizar(usuario))
+                    if (clsNAsientoTipo.Actualizar(tipo))
                     {
                         CargaDatos();
-                        btnCancelar_Click(null, null);
+                        btnCancelar_Click_1(null, null);
                     }
                 }
             }
@@ -141,14 +152,13 @@ namespace MyApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             panelGrid.BringToFront();
             panelDatos.Visible = false;
             panelDatos.SendToBack();
             this.Estado = EstadosDeForma.Inicial;
         }
-
-        #endregion
     }
 }

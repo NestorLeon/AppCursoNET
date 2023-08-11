@@ -13,10 +13,17 @@
     <Setting Name="BD_CursoCSharpNetConnectionString1" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+<<<<<<< HEAD
   &lt;ConnectionString&gt;Data Source=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Initial Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin;Password=s1I8lTCuyPxnXdkCGOV5&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Initial Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin;Password=s1I8lTCuyPxnXdkCGOV5</Value>
+=======
+  &lt;ConnectionString&gt;Data Source=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Initial Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Initial Catalog=BD_CursoCSharpNet;Persist Security Info=True;User ID=admin</Value>
+>>>>>>> a927e7e5c4fc008c2eb4e35ce2e917feee3f4a15
     </Setting>
   </Settings>
 </SettingsFile>

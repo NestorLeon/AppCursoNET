@@ -33,5 +33,11 @@
       <Column Name="Formato_Pantalla" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Sonido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
+   </Table>
+  <Table Name="dbo.Asiento_Tipo" Member="Asiento_Tipo">
+    <Type Name="Asiento_Tipo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
   </Table>
 </Database>
