@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dcCine">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 8.5" name="dcCine">
   <DataContextMoniker Name="/dcCineDataContext" />
   <nestedChildShapes>
     <classShape Id="b9f5e3ef-c10e-4904-b34f-1a3b37db9261" absoluteBounds="6.75, 0.75, 2, 1.7708968098958331">
@@ -27,10 +27,10 @@
         <elementListCompartment Id="89173734-57a0-470c-bdee-ee280a34c892" absoluteBounds="3.8899999999999997, 1.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4f8a2f12-dba6-4948-9958-9435e22ec553" absoluteBounds="5, 4.375, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/dcCineDataContext/Sala_Tipo" />
+    <classShape Id="d842d6fe-68e9-49b6-a257-667fda82a12a" absoluteBounds="9.625, 1.875, 2, 1.1830130915840467">
+      <DataClassMoniker Name="/dcCineDataContext/Asiento_Tipo" />
       <nestedChildShapes>
-        <elementListCompartment Id="a1af5b0a-6243-40f2-929d-2ad98ebc3ddb" absoluteBounds="5.015, 4.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="da574305-f931-4606-b8aa-e08fde180caa" absoluteBounds="9.64, 2.335, 1.9700000000000002, 0.62301309158404661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

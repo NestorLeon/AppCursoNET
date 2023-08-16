@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsNAsientoTipo.cs" />
+    <Compile Include="clsNCiudad.cs" />
     <Compile Include="clsNSalaTipo.cs" />
     <Compile Include="clsNUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
