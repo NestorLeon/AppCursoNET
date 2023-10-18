@@ -16,7 +16,7 @@ namespace MyApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Tipo_Asiento());
+            Application.Run(new frmPrincipal());
         }
     }
 }

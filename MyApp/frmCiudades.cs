@@ -13,14 +13,14 @@ using Utilerias;
 
 namespace MyApp
 {
-    public partial class Ciudades : Form
+    public partial class frmCiudades : Form
     {
         #region PROPIEDADES
         public EstadosDeForma Estado { get; set; }
         #endregion
 
         #region CONSTRUCTORES
-        public Ciudades()
+        public frmCiudades()
         {
             InitializeComponent();
             CargaDatos();

@@ -13,15 +13,14 @@ using Utilerias;
 
 namespace MyApp
 {
-    public partial class Form_Tipo_Asiento : Form
+    public partial class frmUsuarios : Form
     {
-
         #region PROPIEDADES
         public EstadosDeForma Estado { get; set; }
         #endregion
 
         #region CONSTRUCTORES
-        public Form_Tipo_Asiento()
+        public frmUsuarios()
         {
             InitializeComponent();
             CargaDatos();
@@ -32,47 +31,54 @@ namespace MyApp
         #region METODOS
         private void CargaDatos()
         {
-            List<Asiento_Tipo> tipos = clsNAsientoTipo.ObtenerLista();
-            dgvDatos.DataSource = tipos;
+            List<Usuario> usuarios = clsNUsuario.ObtenerLista();
+            dgvDatos.DataSource = usuarios;
 
             #region FORMATEAR GRID
             if (dgvDatos.Columns.Contains("ID"))
             {
                 dgvDatos.Columns["ID"].Visible = false;
             }
-            if (dgvDatos.Columns.Contains("Tipo"))
+            if (dgvDatos.Columns.Contains("Usuario1"))
             {
-                dgvDatos.Columns["Tipo"].HeaderText = "Tipo de Asiento";
+                dgvDatos.Columns["Usuario1"].HeaderText = "Nombre de Usuario";
+            }
+            if (dgvDatos.Columns.Contains("CorreoElectronico"))
+            {
+                dgvDatos.Columns["CorreoElectronico"].HeaderText = "Correo Electrónico";
             }
             #endregion
         }
         private void LimpiarFormulario()
         {
             txtUsuario.Text = "";
+            txtPassword.Text = "";
+            txtCorreoElectronico.Text = "";
         }
         #endregion
 
-
+        #region EVENTOS CLICKs BOTONES
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
 
-            lblTituloPanelDatos.Text = "Nuevo tipo de asiento";
+            lblTituloPanelDatos.Text = "Nuevo Usuario";
             panelDatos.BringToFront();
             panelDatos.Visible = true;
             panelGrid.SendToBack();
             this.Estado = EstadosDeForma.Nuevo;
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                Asiento_Tipo tipo = clsNAsientoTipo.GetOne(ID);
+                Usuario usuario = clsNUsuario.GetOne(ID);
 
-                txtUsuario.Text = tipo.Tipo;
+                txtUsuario.Text = usuario.Usuario1;
+                txtPassword.Text = usuario.Password;
+                txtCorreoElectronico.Text = usuario.CorreoElectronico;
 
                 lblTituloPanelDatos.Text = "Actualizar Usuario";
                 panelDatos.BringToFront();
@@ -84,16 +90,14 @@ namespace MyApp
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
 
-                if (clsNAsientoTipo.Eliminar(ID))
+                if(clsNUsuario.Eliminar(ID))
                     CargaDatos();
             }
             catch (Exception ex)
@@ -108,7 +112,8 @@ namespace MyApp
             {
                 if (this.Estado == EstadosDeForma.Nuevo)
                 {
-                    if (clsNAsientoTipo.CrearCuenta(txtUsuario.Text)
+                    if (clsNUsuario.CrearCuenta(txtUsuario.Text,
+                                    txtPassword.Text, txtCorreoElectronico.Text)
                     )
                     {
                         CargaDatos();
@@ -118,11 +123,13 @@ namespace MyApp
                 else if (this.Estado == EstadosDeForma.Actualizando)
                 {
                     int ID = (int)dgvDatos.SelectedRows[0].Cells["ID"].Value;
-                    Asiento_Tipo tipo = new Asiento_Tipo();
-                    tipo.ID = ID;
-                    tipo.Tipo = txtUsuario.Text;
+                    Usuario usuario = new Usuario();
+                    usuario.ID = ID;
+                    usuario.Usuario1 = txtUsuario.Text;
+                    usuario.Password = txtPassword.Text;
+                    usuario.CorreoElectronico = txtCorreoElectronico.Text;
 
-                    if (clsNAsientoTipo.Actualizar(tipo))
+                    if (clsNUsuario.Actualizar(usuario))
                     {
                         CargaDatos();
                         btnCancelar_Click(null, null);
@@ -134,7 +141,6 @@ namespace MyApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelGrid.BringToFront();
@@ -142,5 +148,7 @@ namespace MyApp
             panelDatos.SendToBack();
             this.Estado = EstadosDeForma.Inicial;
         }
+
+        #endregion
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MyApp
 {
-    partial class Form_Tipo_Asiento
+    partial class frmTiposDeAsientos
     {
         /// <summary>
         /// Required designer variable.

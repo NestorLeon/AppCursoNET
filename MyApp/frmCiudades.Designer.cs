@@ -2,7 +2,7 @@
 
 namespace MyApp
 {
-    partial class Ciudades
+    partial class frmCiudades
     {
         /// <summary>
         /// Variable del diseñador necesaria.

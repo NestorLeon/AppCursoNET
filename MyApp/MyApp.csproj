@@ -53,34 +53,43 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciudades.cs">
+    <Compile Include="frmCiudades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ciudades.Designer.cs">
-      <DependentUpon>Ciudades.cs</DependentUpon>
+    <Compile Include="frmCiudades.Designer.cs">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Tipo_Asiento.cs">
+    <Compile Include="frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Tipo_Asiento.Designer.cs">
-      <DependentUpon>Form_Tipo_Asiento.cs</DependentUpon>
+    <Compile Include="frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTiposDeAsientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTiposDeAsientos.Designer.cs">
+      <DependentUpon>frmTiposDeAsientos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Ciudades.resx">
-      <DependentUpon>Ciudades.cs</DependentUpon>
+    <EmbeddedResource Include="frmCiudades.resx">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Tipo_Asiento.resx">
-      <DependentUpon>Form_Tipo_Asiento.cs</DependentUpon>
+    <EmbeddedResource Include="frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTiposDeAsientos.resx">
+      <DependentUpon>frmTiposDeAsientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
