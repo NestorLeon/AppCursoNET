@@ -18,6 +18,25 @@ namespace Negocio
         #endregion
 
         #region MÉTODOS, ACCIONES, OPERACIONES
+        public static List<Usuario> Search(string usuario, string correo)
+        {
+            string strConnection = "Server=database-server-cine.c8hbnhjrqbcv.us-east-2.rds.amazonaws.com;Database=BD_CursoCSharpNet;User Id=admin;Password=s1I8lTCuyPxnXdkCGOV5;";
+            dcCineDataContext dcDataContext = new dcCineDataContext(strConnection);
+            dcDataContext.Connection.Open();
+
+            //  select * from Usuario
+            //  where usuario like '%texto%' and correo like '%texto%'
+            var sqlConsulta = from u in dcDataContext.Usuario
+                              where u.Usuario1.Contains(usuario) &
+                                    u.CorreoElectronico.Contains(correo)
+                              select u;
+
+            dcDataContext.SubmitChanges();
+            dcDataContext.Connection.Close();
+
+            return sqlConsulta.ToList();
+        }
+
         public static bool CrearCuenta(string usuario, string password, string correo_electronico)
         {
             bool valorRetorno = false;
