@@ -91,6 +91,8 @@
     <EmbeddedResource Include="Catalogos\frmTiposDeAsientos.resx">
       <DependentUpon>frmTiposDeAsientos.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -127,9 +129,6 @@
       <Project>{5f6075a0-e6f1-46a1-8751-6f4bc76e0b41}</Project>
       <Name>Utilerias</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="log.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
