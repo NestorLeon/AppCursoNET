@@ -51,8 +51,5 @@ namespace MyApp
         }
         #endregion
 
-
-        #endregion
-
     }
 }

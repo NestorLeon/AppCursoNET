@@ -326,7 +326,9 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Detalles" />
+                  <Group Name="Detalles">
+                    <Parent>=Count(Fields!ID.Value)</Parent>
+                  </Group>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -361,7 +363,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>parCantidadDeRegistros</rd:DefaultName>
-            <Top>2.73057cm</Top>
+            <Top>2.6953cm</Top>
             <Left>13.75516cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
@@ -395,7 +397,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>2.73057cm</Top>
+            <Top>2.6953cm</Top>
             <Left>10.34203cm</Left>
             <Height>0.6cm</Height>
             <Width>3.23674cm</Width>
@@ -411,7 +413,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.42708in</Height>
+        <Height>1.36458in</Height>
         <Style />
       </Body>
       <Width>6.51425in</Width>
