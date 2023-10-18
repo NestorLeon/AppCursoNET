@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MyApp.Reportes;
+
 namespace MyApp
 {
     public partial class frmPrincipal : Form
@@ -41,7 +43,14 @@ namespace MyApp
         #endregion
 
         #region REPORTES
+        private void miReportes_Usuarios_Click(object sender, EventArgs e)
+        {
+            frmReporteUsuarios frmReporteUsuarios = new frmReporteUsuarios();
+            frmReporteUsuarios.MdiParent = this;
+            frmReporteUsuarios.Show();
+        }
         #endregion
+
 
     }
 }

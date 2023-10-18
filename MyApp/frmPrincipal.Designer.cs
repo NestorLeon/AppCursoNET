@@ -30,10 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.catálogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miCatalogos_Usuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.miCatalogos_TiposDeAsientos = new System.Windows.Forms.ToolStripMenuItem();
             this.miCatalogos_Ciudades = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReportes_Usuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,12 +59,6 @@
             this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.catálogosToolStripMenuItem.Text = "Catálogos";
             // 
-            // reportesToolStripMenuItem
-            // 
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.reportesToolStripMenuItem.Text = "Reportes";
-            // 
             // miCatalogos_Usuarios
             // 
             this.miCatalogos_Usuarios.Name = "miCatalogos_Usuarios";
@@ -84,6 +79,21 @@
             this.miCatalogos_Ciudades.Size = new System.Drawing.Size(180, 22);
             this.miCatalogos_Ciudades.Text = "Ciudades";
             this.miCatalogos_Ciudades.Click += new System.EventHandler(this.miCatalogos_Ciudades_Click);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miReportes_Usuarios});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // miReportes_Usuarios
+            // 
+            this.miReportes_Usuarios.Name = "miReportes_Usuarios";
+            this.miReportes_Usuarios.Size = new System.Drawing.Size(180, 22);
+            this.miReportes_Usuarios.Text = "Usuarios";
+            this.miReportes_Usuarios.Click += new System.EventHandler(this.miReportes_Usuarios_Click);
             // 
             // frmPrincipal
             // 
@@ -110,5 +120,6 @@
         private System.Windows.Forms.ToolStripMenuItem miCatalogos_TiposDeAsientos;
         private System.Windows.Forms.ToolStripMenuItem miCatalogos_Ciudades;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miReportes_Usuarios;
     }
 }
