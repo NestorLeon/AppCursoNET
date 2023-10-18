@@ -115,6 +115,9 @@
       <DependentUpon>frmCiudades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formatos\rptUsuarios.rdlc" />
+    <EmbeddedResource Include="Catalogos\frmCiudades.resx">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
