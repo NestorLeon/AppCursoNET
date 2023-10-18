@@ -77,8 +77,6 @@
     <Compile Include="Catalogos\frmTiposDeAsientos.Designer.cs">
       <DependentUpon>frmTiposDeAsientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Catalogos\frmCiudades.resx">
       <DependentUpon>frmCiudades.cs</DependentUpon>
     </EmbeddedResource>
