@@ -39,10 +39,13 @@ namespace Datos
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertAsiento_Tipo(Asiento_Tipo instance);
+    partial void UpdateAsiento_Tipo(Asiento_Tipo instance);
+    partial void DeleteAsiento_Tipo(Asiento_Tipo instance);
     #endregion
 		
 		public dcCineDataContext() : 
-				base(global::Datos.Properties.Settings.Default.BD_CursoCSharpNetConnectionString, mappingSource)
+				base(global::Datos.Properties.Settings.Default.BD_CursoCSharpNetConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -92,6 +95,14 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Asiento_Tipo> Asiento_Tipo
+		{
+			get
+			{
+				return this.GetTable<Asiento_Tipo>();
 			}
 		}
 	}
@@ -518,6 +529,92 @@ namespace Datos
 					this._CorreoElectronico = value;
 					this.SendPropertyChanged("CorreoElectronico");
 					this.OnCorreoElectronicoChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Asiento_Tipo")]
+	public partial class Asiento_Tipo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Tipo;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTipoChanging(string value);
+    partial void OnTipoChanged();
+    #endregion
+		
+		public Asiento_Tipo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tipo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Tipo
+		{
+			get
+			{
+				return this._Tipo;
+			}
+			set
+			{
+				if ((this._Tipo != value))
+				{
+					this.OnTipoChanging(value);
+					this.SendPropertyChanging();
+					this._Tipo = value;
+					this.SendPropertyChanged("Tipo");
+					this.OnTipoChanged();
 				}
 			}
 		}
